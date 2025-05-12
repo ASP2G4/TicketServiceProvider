@@ -1,0 +1,20 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "TicketServiceProvider";
+
+package ticket;
+
+service TicketContract {
+	rpc CreateTicket (TicketRequest) returns (TicketReply);
+}
+
+message TicketRequest{
+	string event_id = 1;
+	int32 ticket_amount = 2;
+	int32 ticket_price = 3;
+}
+
+message TicketReply{
+	bool succeeded = 1;
+	string message = 2;
+}
