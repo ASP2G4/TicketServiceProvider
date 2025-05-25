@@ -10,8 +10,11 @@ service TicketContract {
 
 message TicketRequest{
 	string event_id = 1;
-	int32 ticket_amount = 2;
-	int32 ticket_price = 3;
+	string event_name = 2;
+	int32 silver_ticket_amount = 3;
+	int32 silver_ticket_price = 4;
+	int32 gold_ticket_amount = 5;
+	int32 gold_ticket_price = 6;
 }
 
 message TicketReply{
