@@ -9,7 +9,7 @@ public interface ITicketRepository
 {
     Task<bool> DeleteAsync(Expression<Func<TicketEntity, bool>> expression);
     Task<IEnumerable<TicketEntity>> GetAllAsync();
-    Task<TicketEntity?> GetAsync(Expression<Func<TicketEntity, bool>> expression);
+    Task<IEnumerable<TicketEntity>?> GetAsync(string eventId);
     Task<bool> UpdateAsync(TicketEntity entity);
 }
 
@@ -28,13 +28,13 @@ public class TicketRepository : ITicketRepository
     /* Read */
     public virtual async Task<IEnumerable<TicketEntity>> GetAllAsync()
     {
-        var entities = await _table.ToListAsync();
+        var entities = await _table.Include(t => t.Category).ToListAsync();
         return entities;
     }
 
-    public virtual async Task<TicketEntity?> GetAsync(Expression<Func<TicketEntity, bool>> expression)
+    public virtual async Task<IEnumerable<TicketEntity>?> GetAsync(string eventId)
     {
-        var entity = await _table.FirstOrDefaultAsync(expression);
+        var entity = await _table.Include(t => t.Category).Where(t => t.EventId == eventId).ToListAsync();
         return entity;
     }
 

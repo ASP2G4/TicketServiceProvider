@@ -20,7 +20,9 @@ public class TicketController(ITicketService ticketService) : ControllerBase
     [HttpGet("{eventId}")]
     public async Task<IActionResult> Get(string eventId)
     {
-        var events = await _ticketService.GetTicketByIdAsync(eventId);
+        var events = await _ticketService.GetTicketByEventIdAsync(eventId);
         return events == null ? NotFound() : Ok(events);
     }
+
+
 }
