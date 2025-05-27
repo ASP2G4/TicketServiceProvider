@@ -12,7 +12,7 @@ public class Ticket
 
     public int TicketAmount { get; set; }
 
-    public int TicketPrice { get; set; }
+    public double TicketPrice { get; set; }
 
     public Category Category { get; set; } = null!;
 }
