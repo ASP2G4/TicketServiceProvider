@@ -12,9 +12,9 @@ message TicketRequest{
 	string event_id = 1;
 	string event_name = 2;
 	int32 silver_ticket_amount = 3;
-	int32 silver_ticket_price = 4;
+	double silver_ticket_price = 4;
 	int32 gold_ticket_amount = 5;
-	int32 gold_ticket_price = 6;
+	double gold_ticket_price = 6;
 }
 
 message TicketReply{

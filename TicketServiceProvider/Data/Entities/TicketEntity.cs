@@ -14,7 +14,7 @@ public class TicketEntity
     public int TicketAmount { get; set; }
 
 
-    public int TicketPrice { get; set; }
+    public double TicketPrice { get; set; }
 
     [ForeignKey(nameof(Category))]
     public int CategoryId { get; set; }
